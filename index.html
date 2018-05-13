@@ -4,8 +4,8 @@ layout: default
 
 <div class="page clearfix" index>
     <div class="left">
-        <h1>Blog</h1>
-        <small>helloworld</small>
+        <h1>Welcome to My Blog!</h1>
+        <small>Hello World</small>
         <hr>
         <ul>
             {% for post in paginator.posts %}
@@ -45,39 +45,25 @@ layout: default
         </ul>
 
 
-		
-		
-		
-		
-	
-		
-		
-		        <!-- Pagination links -->
-        		{% if paginator.total_pages > 1 %}
-				<div class="pagination">
-				  {% if paginator.previous_page %}
-					<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
-				  {% else %}
-					<span>&laquo; Prev</span>
-				  {% endif %}
 
-				  {% for page in (1..paginator.total_pages) %}
-					{% if page == paginator.page %}
-					  <em>{{ page }}</em>
-					{% elsif page == 1 %}
-					  <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
-					{% else %}
-					  <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-					{% endif %}
-				  {% endfor %}
-
-				  {% if paginator.next_page %}
-					<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
-				  {% else %}
-					<span>Next &raquo;</span>
-				  {% endif %}
-				</div>
-			{% endif %}
+        <!-- Pagination links -->
+        <div class="pagination">
+          {% if paginator.previous_page %}
+            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
+            <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous"><i class="fa fa-angle-left"></i></a>
+          {% else %}
+            <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
+            <span class="previous disable"><i class="fa fa-angle-left"></i></span>
+          {% endif %}
+          <span class="page_number ">{{ paginator.page }}/{{ paginator.total_pages }}</span>
+          {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path }}" class="next"><i class="fa fa-angle-right"></i></a>
+            <a href="{{ site.baseurl }}/page{{ paginator.total_pages }}" class="next"><i class="fa fa-angle-double-right"></i></a>
+          {% else %}
+            <span class="next disable"><i class="fa fa-angle-right"></i></span>
+            <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
+          {% endif %}
+        </div>
     </div>
     <!-- <button class="anchor"><i class="fa fa-anchor"></i></button> -->
     <div class="right">
