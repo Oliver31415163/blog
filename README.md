@@ -1,2 +1,2 @@
-# blog
-This is my blog
+# suzerui123.github.io
+this is my blog
